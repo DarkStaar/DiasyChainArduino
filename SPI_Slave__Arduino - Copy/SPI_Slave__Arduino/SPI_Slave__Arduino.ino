@@ -18,21 +18,24 @@ ISR(SPI_STC_vect)
     slave_txd = slave_rxd;
     Serial.println(slave_rxd);
   }
-  if(SPDR > 48 && SPDR < 51)
+  if(SPDR > 48 && SPDR < 52)
   {
     a = SPDR;
     if(a == '2')
     {
       digitalWrite(LED0, 1);
     }
-    else
+    else if (a == '1')
     {
       digitalWrite(LED0, 0);
     }
+    else if(a == '3')
+    {
+      digitalWrite(LED0, 1);
+    }
   }
-  // Signal to polling in loop().
   SPDR = slave_txd;
-  
+  // Signal to polling in loop().
   received = true;
 }
 
@@ -56,26 +59,5 @@ void setup() {
 void loop() {
   if(received){ // Polling something received.
     received = false;
-
-    //Serial.println(slave_rxd);
-    
-    //Serial.println(a);
-    // Could be done in IRQ.
-    //char slave_txd = slave_rxd;
-    //SPDR = slave_txd; // Sends value to master via SPDR.
-    /*if(slave_rxd == '1')
-    {
-      digitalWrite(LED0, 1);
-    }
-    else
-    {
-      digitalWrite(LED0, 0);
-    }
-    
-    // Show LSB of Rx data on LED0.
-    if(slave_rxd >=65 && slave_rxd <= 90){
-      //Serial.println(slave_rxd);
-      Serial.println();
-    }*/
   }
 }

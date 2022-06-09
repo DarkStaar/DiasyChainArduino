@@ -10,13 +10,6 @@ char input;
 char data[2];
 uint8_t master_rxd;
 
-char transferAndWait(char slovo)
-{
-  char a = SPI.transfer(slovo);
-  delay(50);
-  return a;
-}
-
 void setup() {
 	pinMode(LED0, OUTPUT);
 	digitalWrite(LED0, 0);
@@ -35,9 +28,14 @@ void loop() {
 	char master_txd = master_cnt;
   input = Serial.read();
   if(input == '1'){
-    flag1 = true;
-  } else if(input == '2'){
-    flag1 = false;
+    a = '1';
+  } 
+  else if(input == '2'){
+    a = '2';
+  }
+  else if (input == '3')
+  {
+    a = '3';
   }
   
   if(master_cnt == 'z')
@@ -53,13 +51,18 @@ void loop() {
 	digitalWrite(SS, LOW);
 	// Send the master_txd value to Slave
 	// and also receives value from Slave.
-  if(flag1){
-    a = '1';
-  } else{
-    a = '2';
-  }
   
   master_rxd = SPI.transfer(master_txd);
+  
+  Serial.println(master_rxd);
+  if(master_rxd == 90)
+  {
+    digitalWrite(LED0, 1);
+    digitalWrite(LED1, 1);
+    delay(2000);
+    digitalWrite(LED0, 0);
+    digitalWrite(LED1, 0);
+  }
   delay(250);
   digitalWrite(SS, HIGH);
   delay(250);
@@ -71,8 +74,5 @@ void loop() {
   digitalWrite(SS, HIGH);
   delay(250);
   delay(750);
-  //transferAndWait(a);
-	// Show LSB of Rx data on LED0.
-	Serial.println(master_rxd);
 	Serial.println();
 }
