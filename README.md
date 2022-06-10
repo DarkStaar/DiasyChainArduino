@@ -22,3 +22,6 @@ When Slave 1 receives a lowercase letter, write it in Serial,
 converts it to uppercase and sends it to Slave 2. 
 Slave 2 takes the given uppercase letter, write it in Serial, 
 and sends it to the Master who converts it to ASCII code and writes it in Serial.
+
+
+[Arduino Youtube Video](https://www.youtube.com/watch?v=xu2h0jQKMZc&ab_channel=MilanKapetanovic)
