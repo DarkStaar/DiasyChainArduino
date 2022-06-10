@@ -3,7 +3,7 @@ Projekat iz LPRS2
 
 SPI Daisy Chain project
 
-Our project was to connect 3 Arduino Uno boards in SPI Daisy Chain.
+This project was to connect 3 Arduino Uno boards in SPI Daisy Chain.
 The principle on which this project works is our first Arduino is 
 working as Master and other 2 Arduino's are Slaves. Master is always
 sending value of lowercase letters, from a-z, and upon reset turns both LEDs on. 
