@@ -23,5 +23,10 @@ converts it to uppercase and sends it to Slave 2.
 Slave 2 takes the given uppercase letter, write it in Serial, 
 and sends it to the Master who converts it to ASCII code and writes it in Serial.
 
+Daisy Chain configuration:
+
+![286845647_446897987237920_6224161387439325622_n](https://user-images.githubusercontent.com/63914173/173367199-ab37648d-a2df-4e95-8a77-b66e4de169f5.png)
+
+
 
 [Arduino Youtube Video](https://www.youtube.com/watch?v=xu2h0jQKMZc&ab_channel=MilanKapetanovic)
